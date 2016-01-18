@@ -1,4 +1,5 @@
 class Admin::UsersController < AdminController
+  skip_before_action :check_login,only: [:new,:create]
   before_action :set_admin_user, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/users
@@ -25,10 +26,12 @@ class Admin::UsersController < AdminController
   # POST /admin/users.json
   def create
     @admin_user = Admin::User.new(admin_user_params)
-
+    @admin_user.identity = 0;
     respond_to do |format|
       if @admin_user.save
-        format.html { redirect_to @admin_user, notice: 'User was successfully created.' }
+        session[:user_id] = @admin_user.id
+        session[:username] = @admin_user.username
+        format.html { redirect_to root_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @admin_user }
       else
         format.html { render :new }
@@ -69,6 +72,6 @@ class Admin::UsersController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_user_params
-      params.require(:admin_user).permit(:username, :password, :password_confirmation, :identity)
+      params.require(:admin_user).permit(:username, :password, :password_confirmation)
     end
 end

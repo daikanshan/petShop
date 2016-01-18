@@ -8,6 +8,7 @@ class Admin::SessionController < ApplicationController
   def create
     prms = params.permit(:username, :password)
     user = Admin::User.find_by_username(prms[:username])
+    
     if user && user.authenticate(prms[:password])
       session[:user_id] = user.id
       session[:username] = user.username
