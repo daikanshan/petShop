@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'login' => 'admin/session#create'
   post 'logout' => 'admin/session#destroy'
   get 'seller' => 'seller/home#index'
+  get 'admin' => 'admin/home#index'
 
   namespace :admin do
     resources :applcts
