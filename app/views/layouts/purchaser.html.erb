@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PetShop</title>
+  <%= stylesheet_link_tag    'purchaser', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'purchaser', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="header">
+    <%= render "shared/purchaser/nav" %>
+  </div>
+  <div class="bodyer">
+    <%= yield %>
+  </div>
+  <div class="footer">
+    <%= render "shared/purchaser/footer" %>
+  </div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 class Admin::UsersController < AdminController
-  skip_before_action :check_login,only: [:new,:create]
+  skip_before_action :check_admin,only: [:new,:create]
   before_action :set_admin_user, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/users

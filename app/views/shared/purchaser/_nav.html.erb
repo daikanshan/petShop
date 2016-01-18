@@ -1,0 +1,25 @@
+
+<div class="navs">
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+        <span class="sr-only">菜单</span>
+      </button>
+      <a class="navbar-brand" href="/">宠物商店</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-01">
+      <ul class="nav navbar-nav">
+
+      </ul>
+      <% if session[:user_id].nil? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href=<%= login_path %>>登录</a></li>
+      </ul>
+      <% else %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "退出",logout_path,method: :post %></li>
+      </ul>
+      <% end %>
+    </div><!-- /.navbar-collapse -->
+  </nav><!-- /navbar -->
+</div>

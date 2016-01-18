@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  root 'admin/home#index'
+
+  root 'purchaser/home#index'
   get 'login' => 'admin/session#new'
   get 'signup' => 'admin/users#new'
-  post  'login' => 'admin/session#create'
+  post 'login' => 'admin/session#create'
   post 'logout' => 'admin/session#destroy'
+  get 'seller' => 'seller/home#index'
+
   namespace :admin do
     resources :applcts
     resources :users

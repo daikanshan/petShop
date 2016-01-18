@@ -5,6 +5,7 @@ class CreateSellerProducts < ActiveRecord::Migration
       t.float :price
       t.string :img_url
       t.integer :verified
+      t.integer :user_id
 
       t.timestamps null: false
     end

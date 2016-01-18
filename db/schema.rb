@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160118060628) do
     t.float    "price",      limit: 24
     t.string   "img_url",    limit: 255
     t.integer  "verified",   limit: 4
+    t.integer  "user_id",    limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
