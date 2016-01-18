@@ -1,0 +1,2 @@
+module Purchaser::ListsHelper
+end

@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  root 'admin/home#index'
+  get 'login' => 'admin/session#new'
+  get 'signup' => 'admin/users#new'
+  post  'login' => 'admin/session#create'
+  post 'logout' => 'admin/session#destroy'
+  namespace :admin do
+    resources :applcts
+    resources :users
+  end
+
+  namespace :purchaser do
+    resources :lists
+    resources :carts
+    resources :orders
+  end
+
+  namespace :seller do
+    resources :products
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

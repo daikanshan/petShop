@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @seller_product.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @seller_product.price %>
+</p>
+
+<p>
+  <strong>Img url:</strong>
+  <%= @seller_product.img_url %>
+</p>
+
+<p>
+  <strong>Verified:</strong>
+  <%= @seller_product.verified %>
+</p>
+
+<%= link_to 'Edit', edit_seller_product_path(@seller_product) %> |
+<%= link_to 'Back', seller_products_path %>

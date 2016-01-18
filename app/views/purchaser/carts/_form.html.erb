@@ -1,0 +1,17 @@
+<%= form_for(@purchaser_cart) do |f| %>
+  <% if @purchaser_cart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purchaser_cart.errors.count, "error") %> prohibited this purchaser_cart from being saved:</h2>
+
+      <ul>
+      <% @purchaser_cart.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
