@@ -4,7 +4,7 @@ class Seller::ProductsController < SellerController
   # GET /seller/products
   # GET /seller/products.json
   def index
-    @seller_products = login_user.products
+    @seller_products = login_user.products.paginate(page:params[:page],per_page:10)
   end
 
   # GET /seller/products/1
