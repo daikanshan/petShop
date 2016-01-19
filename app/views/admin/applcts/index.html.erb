@@ -1,27 +1,21 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Admin Applcts</h1>
-
-<table>
+<h1>申请处理</h1>
+<table class="table">
   <thead>
     <tr>
-      <th>Identity</th>
-      <th colspan="3"></th>
+      <th>申请人</th>
+      <th>申请陈述</th>
     </tr>
   </thead>
 
   <tbody>
     <% @admin_applcts.each do |admin_applct| %>
-      <tr>
-        <td><%= admin_applct.identity %></td>
-        <td><%= link_to 'Show', admin_applct %></td>
-        <td><%= link_to 'Edit', edit_admin_applct_path(admin_applct) %></td>
-        <td><%= link_to 'Destroy', admin_applct, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr class="item_line">
+        <td><%= admin_applct.user.username %></td>
+        <td>用户<%= admin_applct.user.username %>申请成为卖家</td>
+        <td><%= button_to "不同意",admin_applcts_path+"/#{admin_applct.id}+?user_id=#{admin_applct.user.id}&identity=#{-1}",method: :patch %>
+            <%= button_to "同意", admin_applcts_path+"/#{admin_applct.id}+?user_id=#{admin_applct.user.id}&identity=#{1}",method: :patch %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Applct', new_admin_applct_path %>

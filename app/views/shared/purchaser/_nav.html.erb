@@ -11,12 +11,19 @@
       <ul class="nav navbar-nav">
 
       </ul>
-      <% if session[:user_id].nil? %>
+      <% if !login_user %>
       <ul class="nav navbar-nav navbar-right">
         <li><a href=<%= login_path %>>登录</a></li>
       </ul>
       <% else %>
       <ul class="nav navbar-nav navbar-right">
+        <% if login_user.identity== 0 %>
+          <li><%= link_to "成为卖家",admin_applcts_path(:user_id => login_user.id),method: :post %></li>
+        <% elsif login_user.identity == 1 %>
+          <li><%= link_to "卖家后台",seller_path %></li>
+        <% else %>
+          <li><%= link_to "管理员后台",logout_path %></li>
+        <% end %>
         <li><%= link_to "退出",logout_path,method: :post %></li>
       </ul>
       <% end %>

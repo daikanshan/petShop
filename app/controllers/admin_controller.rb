@@ -3,7 +3,7 @@ class AdminController < ApplicationController
 
   private
   def check_admin
-    if session[:user_id].nil?
+    if !login_user || login_user.identity<2
       respond_to do |format|
         format.html { redirect_to login_path}
         format.json { head :no_content }
