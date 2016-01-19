@@ -4,3 +4,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'flat-ui';
+.entry{
+	float:left;
+	margin:0px 0px 40px 40px;
+}
+.mynav{
+	background:#3498db;
+	border-radius:0px;
+}
+h4,.price{color:gray;}
