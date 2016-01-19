@@ -1,6 +1,6 @@
 
 <div class="navs">
-  <nav class="navbar navbar-inverse mynav" role="navigation">
+  <nav class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
         <span class="sr-only">菜单</span>
@@ -17,8 +17,7 @@
       </ul>
       <% else %>
       <ul class="nav navbar-nav navbar-right">
-        <li ><a href="#"  class="cart_click">购物车</a></li>
-        <li><%= link_to "退出",logout_path,method: :post ,class:"right10"%></li>
+        <li><%= link_to "退出",logout_path,method: :post %></li>
       </ul>
       <% end %>
     </div><!-- /.navbar-collapse -->
