@@ -69,6 +69,6 @@ class Seller::ProductsController < SellerController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seller_product_params
-      params.require(:seller_product).permit(:name, :price, :img_url, :verified)
+      params.require(:seller_product).permit(:name, :price, :avatar,:avatar_cache, :verified)
     end
 end

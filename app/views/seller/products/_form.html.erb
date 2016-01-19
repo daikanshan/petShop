@@ -12,22 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label "名称" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label "价格" %><br>
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :img_url %><br>
-    <%= f.text_field :img_url %>
-  </div>
-  <div class="field">
-    <%= f.label :verified %><br>
-    <%= f.number_field :verified %>
+    <%= f.file_field "avatar" %><br>
+    <%= f.hidden_field :avatar_cache %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "确认" %>
   </div>
 <% end %>
