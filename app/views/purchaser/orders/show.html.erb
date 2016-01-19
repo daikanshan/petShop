@@ -20,14 +20,20 @@
   <% end %>
 
 </table>
-总共：<%= @purchaser_order.total_price %><br>
-你的余额：<%= login_user.money %><br>
-<% if login_user.money>= @purchaser_order.total_price %>
-  <%= button_to "付款",purchaser_orders_path+"/#{@purchaser_order.id}",method: :patch %>
-<% else %>
-  金额不足，请充值后付款
-<% end %>
-<%= link_to '返回', root_path %>
+<span class="btn btn-inline btn-info">总共：<%= @purchaser_order.total_price %></span>
+<span class="btn btn-inline btn-info">你的余额：<%= login_user.money %></span><br>
+<table>
+  <tr>
+    <td>
+      <% if login_user.money>= @purchaser_order.total_price %>
+        <%= button_to "付款",purchaser_orders_path+"/#{@purchaser_order.id}",method: :patch ,class:'btn btn-inline btn-primary',style:'margin-top:5px'%>
+      <% else %>
+        金额不足，请充值后付款
+      <% end %>
+    </td>
+    <td><%= link_to '返回', root_path,class:'btn btn-inline btn-danger' ,style:'margin-top:5px;margin-left:10px'%></td>
+  </tr>
+</table>
 <% else %>
   <h1>付款成功！</h1>
 <% end %>
