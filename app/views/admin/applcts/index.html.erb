@@ -5,6 +5,7 @@
     <tr>
       <th>申请人</th>
       <th>申请陈述</th>
+      <th colspan="2">操作</th>
     </tr>
   </thead>
 
@@ -13,8 +14,9 @@
       <tr class="item_line">
         <td><%= admin_applct.user.username %></td>
         <td>用户<%= admin_applct.user.username %>申请成为卖家</td>
-        <td><%= button_to "不同意",admin_applcts_path+"/#{admin_applct.id}+?user_id=#{admin_applct.user.id}&identity=#{-1}",method: :patch %>
-            <%= button_to "同意", admin_applcts_path+"/#{admin_applct.id}+?user_id=#{admin_applct.user.id}&identity=#{1}",method: :patch %></td>
+        <td style="width:10%"><%= button_to "不同意",admin_applcts_path+"/#{admin_applct.id}+?user_id=#{admin_applct.user.id}&identity=#{-1}",method: :patch ,class:'btn btn-inline btn-info'%></td>
+        <td>
+            <%= button_to "同意", admin_applcts_path+"/#{admin_applct.id}+?user_id=#{admin_applct.user.id}&identity=#{1}",method: :patch ,class:'btn btn-inline btn-info'%></td>
       </tr>
     <% end %>
   </tbody>

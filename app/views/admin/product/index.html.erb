@@ -23,6 +23,9 @@
         <td><%= link_to '删除', product, method: :delete, data: { confirm: '确定删除？' } %></td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="5" align="right"><%= will_paginate @products %></td>
+    </tr>
   </tbody>
 </table>
-<%= will_paginate @products %>
+
