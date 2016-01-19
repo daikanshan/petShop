@@ -4,7 +4,7 @@ class CreateAdminUsers < ActiveRecord::Migration
       t.string :username
       t.string :password_digest
       t.integer :identity
-
+      t.integer :money
       t.timestamps null: false
     end
   end

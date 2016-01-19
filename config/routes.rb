@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   post 'logout' => 'admin/session#destroy'
   get 'seller' => 'seller/home#index'
   get 'admin' => 'admin/home#index'
-
   namespace :admin do
     resources :applcts
     resources :users

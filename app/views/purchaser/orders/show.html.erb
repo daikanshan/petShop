@@ -1,4 +1,28 @@
-<p id="notice"><%= notice %></p>
+<% if @purchaser_order.handled == 0 %>
 
-<%= link_to 'Edit', edit_purchaser_order_path(@purchaser_order) %> |
-<%= link_to 'Back', purchaser_orders_path %>
+<h1>您已创建订单，请尽快结账</h1>
+
+<table class="table">
+  <tr>
+    <th>商品名</th>
+    <th>单价</th>
+    <th>数量</th>
+    <th>总额</th>
+  </tr>
+  <% @purchaser_order.lists.each do |l|  %>
+  <tr>
+
+      <td><%= l.product.name %></td>
+      <td><%= l.product.price %></td>
+      <td><%= l.quantity %></td>
+      <td><%= l.total_price %></td>
+  </tr>
+  <% end %>
+
+</table>
+总共：<%= @purchaser_order.total_price %><br>
+<%= button_to "付款",purchaser_orders_path+"/#{@purchaser_order.id}",method: :patch %>
+<%= link_to '返回', purchaser_orders_path %>
+<% else %>
+  <h1>付款成功！</h1>
+<% end %>

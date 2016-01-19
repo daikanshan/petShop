@@ -1,5 +1,6 @@
 class Purchaser::Cart < ActiveRecord::Base
-  has_many :lists,:dependent => :destroy
+  has_many :lists
+  has_one :order
 
   def add_product(product_id)
     current_list = lists.find_by_product_id(product_id)

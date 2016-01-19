@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160119065513) do
     t.string   "username",        limit: 255
     t.string   "password_digest", limit: 255
     t.integer  "identity",        limit: 4
+    t.integer  "money",           limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160119065513) do
   end
 
   create_table "purchaser_lists", force: :cascade do |t|
+    t.integer  "order_id",   limit: 4
     t.integer  "cart_id",    limit: 4
     t.integer  "product_id", limit: 4
     t.datetime "created_at",                       null: false
@@ -42,8 +44,11 @@ ActiveRecord::Schema.define(version: 20160119065513) do
   end
 
   create_table "purchaser_orders", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",    limit: 4
+    t.integer  "cart_id",    limit: 4
+    t.integer  "handled",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "seller_products", force: :cascade do |t|

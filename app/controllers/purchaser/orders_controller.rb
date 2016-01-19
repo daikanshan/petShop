@@ -24,11 +24,14 @@ class Purchaser::OrdersController < PurchaserController
   # POST /purchaser/orders
   # POST /purchaser/orders.json
   def create
-    @purchaser_order = Purchaser::Order.new(purchaser_order_params)
-
+    @purchaser_order = Purchaser::Order.create(handled:0)
+    @purchaser_order.user_id = session[:user_id]
+    current_cart.lists.each do |item|
+      @purchaser_order.lists<<item
+    end
     respond_to do |format|
       if @purchaser_order.save
-        format.html { redirect_to @purchaser_order, notice: 'Order was successfully created.' }
+        format.html { redirect_to @purchaser_order }
         format.json { render :show, status: :created, location: @purchaser_order }
       else
         format.html { render :new }
@@ -41,12 +44,22 @@ class Purchaser::OrdersController < PurchaserController
   # PATCH/PUT /purchaser/orders/1.json
   def update
     respond_to do |format|
-      if @purchaser_order.update(purchaser_order_params)
-        format.html { redirect_to @purchaser_order, notice: 'Order was successfully updated.' }
+      current_user = login_user
+      if current_user.money - @purchaser_order.total_price>0
+        current_user.money-=@purchaser_order.total_price
+        current_user.save
+        @purchaser_order.handled = 1 #已付款
+        @purchaser_order.save
+        current_cart.destroy
+        session[:cart_id] = nil
+        format.html { redirect_to @purchaser_order }
         format.json { render :show, status: :ok, location: @purchaser_order }
       else
-        format.html { render :edit }
-        format.json { render json: @purchaser_order.errors, status: :unprocessable_entity }
+        @purchaser_order.handled = 0 #已付款
+        @purchaser_order.save
+        current_cart.destroy
+        format.html { redirect_to @purchaser_order }
+        format.json { render :show, status: :ok, location: @purchaser_order }
       end
     end
   end
@@ -56,7 +69,7 @@ class Purchaser::OrdersController < PurchaserController
   def destroy
     @purchaser_order.destroy
     respond_to do |format|
-      format.html { redirect_to purchaser_orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to purchaser_orders_url }
       format.json { head :no_content }
     end
   end
