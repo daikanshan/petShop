@@ -10,7 +10,7 @@
   </tr>
   <tr>
      <td>
-     	<%= button_to "清空",@purchaser_cart,:method => :delete, :confirm => "确定删除？" ,class:"btn btn-inline btn-danger"%>
+     	<%= button_to "清空",@purchaser_cart,:method => :delete, :confirm => "确定删除？" ,class:"btn btn-inline btn-danger",style:'margin-right:5px'%>
      </td>
      <td>
      	<%= button_to "结算",purchaser_orders_path(:cart_id => session[:cart_id]),:method => :post, class:"btn btn-inline btn-primary"%>
