@@ -5,11 +5,11 @@
 <div class="entry">
   <h4><%= p.name %></h4>
   <div class="price_line">
-    <span class="price"><%= p.price %></span> 
+    <span class="price"><%= p.price %></span>
     <div class="image">
-  	
+
    </div>
-    <%= button_to "添加到购物车",purchaser_lists_path(:product_id => p) ,class:"btn btn-inline btn-info"%>
+    <%= button_to "添加到购物车",purchaser_lists_path(:product_id => p) ,:remote => true,class:"btn btn-inline btn-info"%>
   </div>
 </div>
 

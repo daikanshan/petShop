@@ -32,11 +32,13 @@ class Purchaser::ListsController < PurchaserController
       return
     end
     @cart = current_cart
+    @purchaser_cart = @cart
     product = Seller::Product.find(params[:product_id])
     @purchaser_list = @cart.add_product(product.id)
     respond_to do |format|
       if @purchaser_list.save
         format.html { redirect_to root_url }
+        format.js {@current_list = @purchaser_list}
         format.json { render :show, status: :created, location: @purchaser_list }
       else
         format.html { render :new }
