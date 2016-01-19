@@ -21,8 +21,13 @@
 
 </table>
 总共：<%= @purchaser_order.total_price %><br>
-<%= button_to "付款",purchaser_orders_path+"/#{@purchaser_order.id}",method: :patch %>
-<%= link_to '返回', purchaser_orders_path %>
+你的余额：<%= login_user.money %><br>
+<% if login_user.money>= @purchaser_order.total_price %>
+  <%= button_to "付款",purchaser_orders_path+"/#{@purchaser_order.id}",method: :patch %>
+<% else %>
+  金额不足，请充值后付款
+<% end %>
+<%= link_to '返回', root_path %>
 <% else %>
   <h1>付款成功！</h1>
 <% end %>
