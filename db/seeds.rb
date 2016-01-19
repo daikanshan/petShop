@@ -9,5 +9,5 @@ if Admin::User.count == 0
   Admin::User.create(username:"admin",password:"admin",password_confirmation:"admin",identity:2)
 end
 (1..10).each do |p|
-  Seller::Product.create(name:"product#{p}",price:10+p,user_id:1)
+  Seller::Product.create(name:"product#{p}",price:10+p,user_id:1,quantity:100)
 end

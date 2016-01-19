@@ -48,6 +48,11 @@ class Purchaser::OrdersController < PurchaserController
       if current_user.money - @purchaser_order.total_price>0
         current_user.money-=@purchaser_order.total_price
         current_user.save
+        @purchaser_order.lists.each do |l|
+          product = l.product
+          product.quantity -= l.quantity
+          product.save
+        end
         @purchaser_order.handled = 1 #已付款
         @purchaser_order.save
         current_cart.destroy

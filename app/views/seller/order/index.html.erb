@@ -1,0 +1,21 @@
+<% @orders.each do |username,order|  %>
+<table class="table">
+  <tr>
+    <th>买家</th>
+    <th>商品名</th>
+    <th>单价</th>
+    <th>数量</th>
+    <th>总额</th>
+  </tr>
+  <% order.each do |l| %>
+  <tr>
+    <td><%= username %></td>
+    <td><%= l.product.name %></td>
+    <td><%= l.product.price %></td>
+    <td><%= l.quantity %></td>
+    <td><%= l.total_price %></td>
+  </tr>
+  <% end %>
+</table>
+<%= button_to "发货",seller_sendout_path(id:@ids[username.to_sym]) %>
+<% end %>

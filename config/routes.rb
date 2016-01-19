@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
 
 
+  namespace :seller do
+  get 'deal/result',as: :result
+  end
+
+  namespace :seller do
+  post 'deal/sendout',as: :sendout
+  end
+
+  namespace :seller do
+  get 'order/index',as: :order
+  end
+
   root 'purchaser/home#index'
   get 'login' => 'admin/session#new'
   get 'signup' => 'admin/users#new'

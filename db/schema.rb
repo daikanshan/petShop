@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20160119065513) do
   create_table "seller_products", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.float    "price",      limit: 24
+    t.integer  "quantity",   limit: 4
     t.string   "img_url",    limit: 255
     t.integer  "verified",   limit: 4
     t.integer  "user_id",    limit: 4
