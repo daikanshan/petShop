@@ -18,4 +18,9 @@ $(function(){
 			opacity:0
 		});
 	});
+	$(".clickout").click(function(){
+		$(".cart").animate({
+			opacity:1
+		});
+	});
 });
