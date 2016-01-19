@@ -69,7 +69,8 @@ class Purchaser::CartsController < PurchaserController
     @purchaser_cart.destroy
     session[:cart_id] = nil
     respond_to do |format|
-      format.html { redirect_to root_url, notice: '您的购物车已经清空了！' }
+      format.html { redirect_to root_url }
+      format.js
       format.json { head :no_content }
     end
   end
