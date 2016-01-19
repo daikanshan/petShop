@@ -1,2 +1,7 @@
 
 $('.cart').html("<%= escape_javascript(render(@cart)) %>");
+$(".close").click(function(){
+		$(".cart").animate({
+			opacity:0
+		});
+	});
