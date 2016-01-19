@@ -4,7 +4,7 @@ class Seller::ProductsController < SellerController
   # GET /seller/products
   # GET /seller/products.json
   def index
-    @seller_products = Seller::Product.all
+    @seller_products = login_user.products
   end
 
   # GET /seller/products/1
@@ -25,7 +25,7 @@ class Seller::ProductsController < SellerController
   # POST /seller/products.json
   def create
     @seller_product = Seller::Product.new(seller_product_params)
-
+    @seller_product.user_id = login_user.id
     respond_to do |format|
       if @seller_product.save
         format.html { redirect_to @seller_product, notice: 'Product was successfully created.' }
@@ -69,6 +69,6 @@ class Seller::ProductsController < SellerController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seller_product_params
-      params.require(:seller_product).permit(:name, :price, :avatar,:avatar_cache, :verified)
+      params.require(:seller_product).permit(:name, :price, :avatar,:avatar_cache, :user_id)
     end
 end

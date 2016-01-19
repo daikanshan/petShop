@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Seller Products</h1>
-
+<h1>商品管理</h1>
+<%= button_to '添加商品', new_seller_product_path,method: :get,class:"btn btn-primary" %>
 <table class="table">
   <thead>
     <tr>
@@ -17,16 +16,12 @@
       <tr>
         <td><%= seller_product.name %></td>
         <td><%= seller_product.price %></td>
-        <td><%= image_tag (seller_product.avatar_url(:thumb)) if seller_product.avatar %></td>
+        <td><%= image_tag (seller_product.avatar_url(:thumb_mini)) if seller_product.avatar %></td>
         <td><%= seller_product.verified %></td>
-        <td><%= link_to 'Show', seller_product %></td>
-        <td><%= link_to 'Edit', edit_seller_product_path(seller_product) %></td>
-        <td><%= link_to 'Destroy', seller_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '显示详情', seller_product %></td>
+        <td><%= link_to '编辑', edit_seller_product_path(seller_product) %></td>
+        <td><%= link_to '删除', seller_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Product', new_seller_product_path %>
