@@ -1,5 +1,5 @@
 class PurchaserController < ApplicationController
-
+  
   private
   def current_cart
     Purchaser::Cart.find(session[:cart_id])

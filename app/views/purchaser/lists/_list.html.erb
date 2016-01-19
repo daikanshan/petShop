@@ -1,0 +1,11 @@
+<tr>
+  <td>
+    <%= list.quantity %>&times;
+  </td>
+  <td>
+    <%= list.product.name %>
+  </td>
+  <td class="item_price">
+    <%= number_to_currency(list.total_price) %>
+  </td>
+</tr>

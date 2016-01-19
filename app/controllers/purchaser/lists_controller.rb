@@ -36,7 +36,7 @@ class Purchaser::ListsController < PurchaserController
     @purchaser_list = @cart.add_product(product.id)
     respond_to do |format|
       if @purchaser_list.save
-        format.html { redirect_to @purchaser_list }
+        format.html { redirect_to root_url }
         format.json { render :show, status: :created, location: @purchaser_list }
       else
         format.html { render :new }
