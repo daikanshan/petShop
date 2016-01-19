@@ -1,11 +1,11 @@
 <tr>
   <td>
-    <%= list.quantity %>&times;
+    <span class="btn btn-inline btn-info space"><%= list.quantity %> </span><span class="btn btn-inline btn-primary space">&times;</span>
   </td>
   <td>
-    <%= list.product.name %>
+    <span class="btn btn-inline btn-info space"><%= list.product.name %></span>
   </td>
   <td class="item_price">
-    <%= number_to_currency(list.total_price) %>
+    <span class="btn btn-inline btn-info space"><%= number_to_currency(list.total_price) %></span>
   </td>
 </tr>
