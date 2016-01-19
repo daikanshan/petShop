@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Admin Users</h1>
+<h1>用户管理</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Username</th>
-      <th>Identity</th>
+      <th>用户名</th>
+      <th>身份</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,15 +15,11 @@
     <% @admin_users.each do |admin_user| %>
       <tr>
         <td><%= admin_user.username %></td>
-        <td><%= admin_user.identity %></td>
-        <td><%= link_to 'Show', admin_user %></td>
-        <td><%= link_to 'Edit', edit_admin_user_path(admin_user) %></td>
-        <td><%= link_to 'Destroy', admin_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= admin_user.discribe %></td>
+        <td><%= link_to '详细信息', admin_user %></td>
+        <td><%= link_to '编辑', edit_admin_user_path(admin_user) %></td>
+        <td><%= link_to '删除', admin_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New User', new_admin_user_path %>

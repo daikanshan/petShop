@@ -1,10 +1,11 @@
 class Admin::ApplctsController < AdminController
+  skip_before_action :check_admin,only: [:new,:create]
   before_action :set_admin_applct, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/applcts
   # GET /admin/applcts.json
   def index
-    @admin_applcts = Admin::Applct.all
+    @admin_applcts = Admin::Applct.where(identity:0 )
   end
 
   # GET /admin/applcts/1
@@ -25,13 +26,13 @@ class Admin::ApplctsController < AdminController
   # POST /admin/applcts.json
   def create
     @admin_applct = Admin::Applct.new(admin_applct_params)
-
+    @admin_applct.identity = 0
     respond_to do |format|
       if @admin_applct.save
-        format.html { redirect_to @admin_applct, notice: 'Applct was successfully created.' }
+        format.html { redirect_to root_url }
         format.json { render :show, status: :created, location: @admin_applct }
       else
-        format.html { render :new }
+        format.html { redirect_to root_url }
         format.json { render json: @admin_applct.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +43,14 @@ class Admin::ApplctsController < AdminController
   def update
     respond_to do |format|
       if @admin_applct.update(admin_applct_params)
-        format.html { redirect_to @admin_applct, notice: 'Applct was successfully updated.' }
+        if @admin_applct.identity == 1
+          @admin_applct.user.identity = 1
+          @admin_applct.user.save
+        else
+          @admin_applct.user.identity = 0
+          @admin_applct.user.save
+        end
+        format.html { redirect_to admin_applcts_path, notice: '处理成功！' }
         format.json { render :show, status: :ok, location: @admin_applct }
       else
         format.html { render :edit }
@@ -69,6 +77,9 @@ class Admin::ApplctsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_applct_params
-      params.require(:admin_applct).permit(:identity)
+      {
+        :identity => params[:identity],
+        :user_id => params[:user_id]
+      }
     end
 end

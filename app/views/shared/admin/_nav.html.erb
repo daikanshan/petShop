@@ -1,3 +1,4 @@
+<% if login_admin %>
 <div class="navs">
   <nav class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
@@ -8,7 +9,8 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-01">
       <ul class="nav navbar-nav">
-
+        <li><a href=<%= admin_users_path %>>用户管理</a></li>
+        <li><a href=<%= admin_applcts_path %>>申请管理</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -17,3 +19,4 @@
     </div><!-- /.navbar-collapse -->
   </nav><!-- /navbar -->
 </div>
+<% end %>
