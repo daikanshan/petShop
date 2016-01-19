@@ -23,7 +23,7 @@
         <% elsif login_user.identity == 1 %>
           <li><%= link_to "卖家后台",seller_path %></li>
         <% else %>
-          <li><%= link_to "管理员后台",logout_path %></li>
+          <li><%= link_to "管理员后台",admin_path %></li>
         <% end %>
         <li><%= link_to "退出",logout_path,method: :post %></li>
       </ul>

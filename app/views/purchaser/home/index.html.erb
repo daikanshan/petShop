@@ -1,6 +1,8 @@
+
 <div class="cart">
-  <%= render @purchaser_cart %>
+    <%= render @purchaser_cart %>
 </div>
+
 <% @products.each do |p| %>
 <div class="entry">
   <%= image_tag (p.avatar_url(:thumb)) if p.avatar %>
@@ -15,3 +17,4 @@
 </div>
 
 <% end %>
+<%= will_paginate @products %>
