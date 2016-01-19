@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'purchaser/home#index'
   get 'login' => 'admin/session#new'
   get 'signup' => 'admin/users#new'
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :applcts
     resources :users
+    get 'product' => 'product#index'
   end
 
   namespace :purchaser do

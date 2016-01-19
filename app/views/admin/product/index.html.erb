@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>产品管理</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>价格</th>
+      <th>图像</th>
+      <th>所属用户</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= image_tag (product.avatar_url(:thumb)) if product.avatar %></td>
+        <td><%= product.user.username %></td>
+        <td><%= link_to '删除', product, method: :delete, data: { confirm: '确定删除？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @products %>
