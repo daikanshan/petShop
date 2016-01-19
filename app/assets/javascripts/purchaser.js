@@ -5,7 +5,7 @@ $(function(){
 	//alert(window.innerWidth);
 	//alert($(".cart_click").css('width'));																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		  
 	$(".cart").css({
-		left:window.innerWidth-parseInt($(".cart").css('width'))+'px',
+		//left:window.innerWidth-parseInt($(".cart").css('width'))+'px',
 		top:window.innerHeight/2-parseInt($(".cart").css('height'))/2,
 	});
 	$(".cart_click").click(function(){
