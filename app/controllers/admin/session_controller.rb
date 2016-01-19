@@ -27,7 +27,8 @@ class Admin::SessionController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = session[:username] = nil
+    current_cart.destroy
+    session[:cart_id] = session[:user_id] = session[:username] = nil
     redirect_to root_path
   end
 end
