@@ -5,6 +5,12 @@
 <table>
   <thead>
     <tr>
+      <th>
+        product_id
+      </th>
+      <th>
+        cart_id
+      </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +18,12 @@
   <tbody>
     <% @purchaser_lists.each do |purchaser_list| %>
       <tr>
+        <td>
+          <%= purchaser_list.product.id %>
+        </td>
+        <td>
+          <%= purchaser_list.cart.id %>
+        </td>
         <td><%= link_to 'Show', purchaser_list %></td>
         <td><%= link_to 'Edit', edit_purchaser_list_path(purchaser_list) %></td>
         <td><%= link_to 'Destroy', purchaser_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>

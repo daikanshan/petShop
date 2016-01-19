@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
-
+<ul>
+  <% @purchaser_cart.lists.each do |l| %>
+    <li><%= l.product.name %> &times; <%= l.quantity %></li>
+  <% end %>
+</ul>
+<%= @purchaser_cart.total_price %>
+<%= button_to "清空",@purchaser_cart,:method => :delete, :confirm => "确定删除？" %>
 <%= link_to 'Edit', edit_purchaser_cart_path(@purchaser_cart) %> |
 <%= link_to 'Back', purchaser_carts_path %>

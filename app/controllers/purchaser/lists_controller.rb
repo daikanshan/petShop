@@ -24,11 +24,19 @@ class Purchaser::ListsController < PurchaserController
   # POST /purchaser/lists
   # POST /purchaser/lists.json
   def create
-    @purchaser_list = Purchaser::List.new(purchaser_list_params)
-
+    if !login_user
+      respond_to do |format|
+        format.html { redirect_to login_path}
+        format.json { head :no_content }
+      end
+      return
+    end
+    @cart = current_cart
+    product = Seller::Product.find(params[:product_id])
+    @purchaser_list = @cart.add_product(product.id)
     respond_to do |format|
       if @purchaser_list.save
-        format.html { redirect_to @purchaser_list, notice: 'List was successfully created.' }
+        format.html { redirect_to @purchaser_list }
         format.json { render :show, status: :created, location: @purchaser_list }
       else
         format.html { render :new }

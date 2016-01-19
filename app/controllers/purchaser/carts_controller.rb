@@ -10,6 +10,17 @@ class Purchaser::CartsController < PurchaserController
   # GET /purchaser/carts/1
   # GET /purchaser/carts/1.json
   def show
+    begin
+      @cart = Purchaser::Cart.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "attempt to access invalid cart #{params[:id]}"
+      redirect_to root_url, :notice => "无效的购物车"
+    else
+      respond_to do |format|
+        format.html
+        format.json { render json: @cart }
+      end
+    end
   end
 
   # GET /purchaser/carts/new
@@ -54,9 +65,11 @@ class Purchaser::CartsController < PurchaserController
   # DELETE /purchaser/carts/1
   # DELETE /purchaser/carts/1.json
   def destroy
+    @purchaser_cart = current_cart
     @purchaser_cart.destroy
+    session[:cart_id] = nil
     respond_to do |format|
-      format.html { redirect_to purchaser_carts_url, notice: 'Cart was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: '您的购物车已经清空了！' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +77,7 @@ class Purchaser::CartsController < PurchaserController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_purchaser_cart
-      @purchaser_cart = Purchaser::Cart.find(params[:id])
+      @purchaser_cart = Purchaser::Cart.find_by_id(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

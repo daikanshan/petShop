@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118060628) do
+ActiveRecord::Schema.define(version: 20160119010201) do
 
   create_table "admin_applcts", force: :cascade do |t|
     t.integer  "identity",   limit: 4
@@ -33,8 +33,11 @@ ActiveRecord::Schema.define(version: 20160118060628) do
   end
 
   create_table "purchaser_lists", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "cart_id",    limit: 4
+    t.integer  "product_id", limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "quantity",   limit: 4, default: 1
   end
 
   create_table "purchaser_orders", force: :cascade do |t|

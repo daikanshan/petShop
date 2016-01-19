@@ -1,8 +1,10 @@
 <% @products.each do |p| %>
+<div class="entry">
   <h3><%= p.name %></h3>
   <div class="price_line">
     <span class="price"><%= p.price %></span>
+    <%= button_to "添加到购物车",purchaser_lists_path(:product_id => p) %>
   </div>
-
+</div>
 
 <% end %>
