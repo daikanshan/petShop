@@ -1,18 +1,25 @@
-<p>
-  <strong>名称:</strong>
-  <%= @seller_product.name %>
-</p>
+<div class="container" style="width:50%">
+	<table class="table">
+	<tr>
+	  <td><strong>名称:</strong></td>
+	  <td><%= @seller_product.name %></td>
+	</tr>
 
-<p>
-  <strong>价格:</strong>
-  <%= @seller_product.price %>
-</p>
+	<tr>
+	  <td><strong>价格:</strong></td>
+	  <td><%= @seller_product.price %></td>
+	</tr>
 
-<p>
-  <strong>图像:</strong>
-  <%= image_tag(@seller_product.avatar_url(:thumb)) if @seller_product.avatar %>
-</p>
+	<tr>
+	  <td><strong>图像:</strong></td>
+	  <td><%= image_tag(@seller_product.avatar_url(:thumb)) if @seller_product.avatar %></td>
+	</tr>
 
-
-<%= link_to '编辑', edit_seller_product_path(@seller_product) %> |
-<%= link_to '返回', seller_products_path %>
+	<tr>
+	  <td colspan="2">
+		  <%= link_to '编辑', edit_seller_product_path(@seller_product) ,class:'btn btn-inline btn-warning'%>
+		  <%= link_to '返回', seller_products_path ,class:'btn btn-inline btn-info'%>
+	  </td>			
+	</tr>
+</div>
+ 

@@ -1,6 +1,8 @@
-<h1>Editing Admin User</h1>
+<div class="container" style="margin-bottom:10px;width:50%">
+	<h1>Editing Admin User</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @admin_user %> |
-<%= link_to 'Back', admin_users_path %>
+	<%= link_to '浏览', @admin_user ,class:'btn btn-inline btn-success'%> 
+	<%= link_to '返回', admin_users_path,class:'btn btn-inline btn-warning' %>
+</div>
