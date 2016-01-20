@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Username:</strong>
+  <strong>用户名:</strong>
   <%= @admin_user.username %>
 </p>
 
 <p>
-  <strong>Identity:</strong>
-  <%= @admin_user.identity %>
+  <strong>身份:</strong>
+  <%= @admin_user.discribe %>
 </p>
 
-<%= link_to 'Edit', edit_admin_user_path(@admin_user) %> |
-<%= link_to 'Back', admin_users_path %>
+<%= link_to '编辑', edit_admin_user_path(@admin_user) %> |
+<%= link_to '返回', admin_users_path %>

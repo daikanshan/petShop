@@ -3,7 +3,7 @@ class SellerController < ApplicationController
 
   private
   def check_seller
-    if !login_user||login_user.identity!=1
+    if !login_user||login_user.identity<1
       respond_to do |format|
         format.html { redirect_to root_path}
         format.json { head :no_content }
