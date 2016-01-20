@@ -11,6 +11,11 @@
 	</tr>
 
 	<tr>
+	  <td><strong>数量:</strong></td>
+	  <td><%= @seller_product.quantity %></td>
+	</tr>
+
+	<tr>
 	  <td><strong>图像:</strong></td>
 	  <td><%= image_tag(@seller_product.avatar_url(:thumb)) if @seller_product.avatar %></td>
 	</tr>
