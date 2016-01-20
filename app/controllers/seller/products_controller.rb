@@ -55,10 +55,13 @@ class Seller::ProductsController < SellerController
   # DELETE /seller/products/1.json
   def destroy
     @seller_product.destroy
-    respond_to do |format|
-      format.html { redirect_to seller_products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
+
+    if login_user.identity == 2
+      redirect_to admin_product_url
+    else
+      redirect_to seller_products_url
     end
+
   end
 
   private
