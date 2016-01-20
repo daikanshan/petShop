@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-
+  post 'modify_info' => 'purchaser/modify#update'
+  get 'modify_info' => 'purchaser/modify#index'
   namespace :seller do
   get 'deal/result',as: :result
   end

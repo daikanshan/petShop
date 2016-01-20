@@ -8,7 +8,7 @@ class Seller::OrderController < SellerController
       @orders[buyer_name.to_sym]=[]
       @ids[buyer_name.to_sym]=order.id
       order.lists.each do |l|
-        @orders[buyer_name.to_sym]<<l
+        @orders[buyer_name.to_sym]<<l if l.product.user == login_user
       end
     end
   end
